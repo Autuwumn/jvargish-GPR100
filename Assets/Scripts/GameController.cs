@@ -38,19 +38,18 @@ public class GameController : MonoBehaviour
                 {
                     int scenario = Random.Range(0, 100);
                     var amount = 1;
-                    if (scenario >= 99)
-                    {
-                        amount = 10;
-                    }
-                    else if (scenario >= 90)
+                    if (scenario >= 87)
                     {
                         amount = 5;
                     }
-                    else if (scenario >= 60)
+                    else if (scenario >= 73)
+                    {
+                        amount = 3;
+                    }
+                    else if (scenario >= 45)
                     {
                         amount = 2;
                     }
-                    print(scenario);
                     for (int i = 0; i < amount; i++)
                     {
                         var newCoin = Instantiate(coinPrefab);
