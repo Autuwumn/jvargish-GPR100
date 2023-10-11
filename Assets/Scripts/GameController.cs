@@ -8,25 +8,30 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour
 {
     public GameObject player;
+
     public GameObject coinPrefab;
-    public GameObject gameOverScreen, gameOverScreen2;
     public List<GameObject> coins = new List<GameObject>();
     private float spawnTimeGoal = 3, spawnTime = 0;
+
     public int score;
     public float fuel = 1000;
     public TextMeshProUGUI scoreText, fuelText;
+
     public bool gameGoing = true;
+    public GameObject gameOverScreen, gameOverScreen2;
     void Start()
     {
+        // Makes sure gameover screen isn't visible
         gameOverScreen.SetActive(false);
         gameOverScreen2.SetActive(false);
     }
 
     void Update()
     {
-
         scoreText.text = "Score: " + score;
         fuelText.text = "Fuel: " + (int)fuel;
+
+        // Actual Game Stuff
         if (gameGoing)
         {
             fuel -= Time.deltaTime * 5;
