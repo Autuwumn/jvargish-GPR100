@@ -15,14 +15,17 @@ public class PlayerController : MonoBehaviour
     }
     void Update()
     {
-        var x = Input.GetAxis("Horizontal") * speed;
-        var y = Input.GetAxis("Vertical") * speed;
-        if(new Vector2(x,y).magnitude > 0.1f)
+        if (gc.gameGoing)
         {
-            gc.UsingFuel();
+            var x = Input.GetAxis("Horizontal") * speed;
+            var y = Input.GetAxis("Vertical") * speed;
+            if (new Vector2(x, y).magnitude > 0.1f)
+            {
+                gc.UsingFuel();
+            }
+            rb.AddForce(new Vector2(x, y));
+            rb.AddForce(rb.velocity * drag);
         }
-        rb.AddForce(new Vector2(x, y));
-        rb.AddForce(rb.velocity * drag);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
